@@ -27,6 +27,7 @@ jobs:
           - v1-dependencies-
 
       - run: composer install -n --prefer-dist
+      - run: yarn add netlify-cli
 
       - save_cache:
           paths:
@@ -35,3 +36,9 @@ jobs:
         
       # run tests!
       - run: ./vendor/bin/jigsaw build production
+  deployment:
+    production:
+        branch: master
+        commands:
+          - ./netlify
+
